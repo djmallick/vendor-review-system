@@ -1,0 +1,12 @@
+.navbar{
+    height: 70px;
+}
+
+.container-fluid{
+    padding-top: 11px;
+}
+
+#tabs:hover{
+    transform: scale(1.2);
+    transition-delay: 0.1s;
+}
