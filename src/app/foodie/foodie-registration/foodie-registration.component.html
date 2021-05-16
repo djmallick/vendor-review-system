@@ -39,77 +39,130 @@
                 </ul>
                 <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <h3 class="register-heading">Apply for Foodie</h3>
-                    
+
                     <form #foodieRegistrationForm="ngForm" (ngSubmit)="onSubmit(foodieRegistrationForm.value)">
-                        <div class="row register-form" style="min-height: 600px;">
-                            <div class="col-md-6">
-                                
-                                <div class="form-group">
-                                    <input type="text" class="form-control" minlength="3" maxlength="50" name="firstName"
-                                    ngModel #firstName="ngModel" placeholder="Enter First Name *" required/>
+                        <div class="row register-form" style="min-height: 600px; width: 100%;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" minlength="3" maxlength="50"
+                                            name="firstName" ngModel #firstName="ngModel"
+                                            placeholder="Enter First Name *" required />
+                                    </div>
                                 </div>
-                        
-                                <div class="form-group">
-                                    <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" type="password" class="form-control" name="password"
-                                    ngModel #password="ngModel" placeholder="Enter Password*" required/>
-                                    <div class="error" *ngIf="password.invalid && password.touched">Password is not valid</div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" minlength="3" maxlength="50"
+                                            name="lastName" ngModel #lastName="ngModel" placeholder="Enter Last Name*"
+                                            required />
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" email name="email"
-                                    ngModel #email="ngModel" placeholder="Enter Email Id*" required/>
-                                    <div class="error" *ngIf="email.invalid && email.touched">Email is not valid</div>
-                                </div>
-    
-                                <div class="form-group">
-                                    <label for="validationCustom05" class="form-label" style="color: #000;">Gender*</label>
-                                    <select class="form-select" name="gender" ngModel #gender="ngModel" required>
-                                        <option selected disabled value="">Your Gender*</option>
-                                        <option selected>Male</option>
-                                        <option>Female</option>
-                                        <option>Others</option>
-                                    </select>
-                                </div>
-    
-                                <div class="form-group">
-                                    <label for="validationCustom05" class="form-label" style="color: #000;">Your address*</label>
-                                    <textarea type="text" name="address" ngModel #address="ngModel" class="form-control" placeholder="Enter your address" required></textarea>
-                                </div>
-                                <div class="error" *ngIf="foodieRegistrationForm.invalid">All the * fields are mandatory</div>
-                                <br>
-                                <!-- <div class="error" *ngIf="password.invalid && password.touched">Password should have atleast 1 one
-                                     lower case letter,  1 upper case letter, 1 number and minimum length of 6</div>
-    
-     -->
-    
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" minlength="3" maxlength="50" name="lastName"  ngModel #lastName="ngModel" placeholder="Enter Last Name*" required />
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" type="password"
+                                            class="form-control" name="password" ngModel #password="ngModel"
+                                            placeholder="Enter Password*" required />
+                                            <div *ngIf="password.dirty && password.invalid">
+                                                <div style="color: rgb(28, 28, 73);">Password must have</div>
+                                                
+                                                <div *ngIf="lowercase(foodieRegistrationForm.value)" class="success">&rarr; 1 lower case letter <span style="color: green;">&#10003;</span></div>
+                                                <div *ngIf="!lowercase(foodieRegistrationForm.value)" class="error">&rarr; 1 lower case letter</div>
+                                                <div *ngIf="uppercase(foodieRegistrationForm.value)" class="success">&rarr; 1 upper case letter <span style="color: green;">&#10003;</span></div>
+                                                <div *ngIf="!uppercase(foodieRegistrationForm.value)" class="error">&rarr; 1 upper case letter</div>
+                                                <div *ngIf="numeric(foodieRegistrationForm.value)" class="success">&rarr; 1 number <span style="color: green;">&#10003;</span></div>
+                                                <div *ngIf="!numeric(foodieRegistrationForm.value)" class="error">&rarr; 1 number </div>
+                                                <div *ngIf="minlength(foodieRegistrationForm.value)" class="success">&rarr; minimum length of 6 <span style="color: green;">&#10003;</span></div> 
+                                                <div *ngIf="!minlength(foodieRegistrationForm.value)" class="error">&rarr; minimum length of 6</div>                                                                       
+                                                <br><br>
+                                            </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" pattern="{{password.value}}" class="form-control" name="confirmPassword"  ngModel #confirmPassword="ngModel" placeholder="Confirm your Password*"
-                                       required />
-                                    <div class="error" *ngIf="confirmPassword.invalid && confirmPassword.touched">Both Password should match</div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" pattern="{{password.value}}" class="form-control"
+                                            name="confirmPassword" ngModel #confirmPassword="ngModel"
+                                            placeholder="Confirm your Password*" required />
+                                        <div class="error" *ngIf="confirmPassword.invalid && confirmPassword.dirty">
+                                            Both Password should match</div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control"  ngModel #mobile="ngModel" pattern="[6-9]{1}[0-9]{9}"
-                                        name="mobile" placeholder="Enter Mobile No.*" required/>
-                                        <div class="error" *ngIf="mobile.invalid && mobile.touched">Mobile no is invalid</div>
-                                </div>
-    
-                                <div class="form-group">
-                                    <label for="validationCustom05" class="form-label" style="color: #000;">Date of
-                                        Birth*</label>
-                                    <input type="date" class="form-control" placeholder="Choose your Date of Birth*" 
-                                    name="dob" ngModel #dob="ngModel" required/>
-                                </div>
-                                <input type="submit" class="btnRegister" [disabled]="foodieRegistrationForm.invalid" value="Register" />
                             </div>
-                            <div class="error" *ngIf="password.invalid && password.touched">Password should have atleast 1 one lower case letter, 
-                                1 upper case letter, 1 number and minimum length of 6</div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" email name="email" ngModel
+                                            #email="ngModel" placeholder="Enter Email Id*" required />
+                                        <div class="error" *ngIf="email.invalid && email.touched">Email is not valid
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ngModel #mobile="ngModel"
+                                            pattern="[6-9]{1}[0-9]{9}" name="mobile" placeholder="Enter Mobile No.*"
+                                            required />
+                                        <div class="error" *ngIf="mobile.invalid && mobile.touched">Mobile no is invalid
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        
+                                        <select class="form-select" name="gender" ngModel #gender="ngModel" required>
+                                            <option selected disabled value="">Your Gender*</option>
+                                            <option selected>Male</option>
+                                            <option>Female</option>
+                                            <option>Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="validationCustom05" class="form-label" style="color: #000;">Date of
+                                            Birth*</label>
+                                        <input type="date" class="form-control" placeholder="Choose your Date of Birth*"
+                                            name="dob" ngModel #dob="ngModel" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="validationCustom05" class="form-label" style="color: #000;">Your
+                                            address*</label>
+                                        <textarea type="text" name="address" ngModel #address="ngModel"
+                                            class="form-control" placeholder="Enter your address" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="error" *ngIf="foodieRegistrationForm.invalid">All the * fields are mandatory
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="submit" class="btnRegister"
+                                        [disabled]="foodieRegistrationForm.invalid" value="Register" />
+                                </div>
+                            </div>
+
+                            
+
                         </div>
                     </form>
-                    
+
                 </div>
             </div>
         </div>

@@ -1,3 +1,9 @@
 .nav-link, .nav-item{
     padding-left: 50px;
 }
+
+.nav-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -28,6 +28,37 @@ export class VendorRegistrationComponent implements OnInit {
     
     this.router.navigate(['vendorregister/plans']);
   }
+
+  lowercase(data):boolean{
+    let regexp = new RegExp('[a-z]');
+    if(regexp.test(data.password)){
+      return true;
+    }
+    return false;
+  }
+
+  uppercase(data):boolean{
+    let regexp = new RegExp('[A-Z]');
+    if(regexp.test(data.password)){
+      return true;
+    }
+    return false;
+  }
+
+  numeric(data):boolean{
+    let regexp = new RegExp('[0-9]');
+    if(regexp.test(data.password)){
+      return true;
+    }
+    return false;
+  }
+
+  minlength(data):boolean{
+    if(data.password.length>=6){
+      return true;
+    }
+    return false;
+  }
   
 
 }

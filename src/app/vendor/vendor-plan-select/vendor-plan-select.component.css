@@ -4,6 +4,10 @@ section.pricing {
     background: linear-gradient(to right, #14688ad5, #9a13acbe);
 }
 
+.col{
+    margin-bottom: 20px;
+}
+
 .card {
     background-color: #000;
     opacity: 0.9;

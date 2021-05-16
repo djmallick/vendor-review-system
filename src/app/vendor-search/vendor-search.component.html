@@ -25,20 +25,31 @@
                 <br><br>
                 <h2>Search a vendor</h2>
                 <br><br>
-                <form class="form-inline">
+                <form class="form">
                     <!-- <span style="color: rgb(45, 45, 95); font-size: 20px;">Search Vendor by ID: &nbsp;</span> -->
-                    <input class="form-control" type="search" name="foodieName" placeholder="e.g. V1000"
+                    <div class="col-md-6">
+                        <input class="form-control" type="search" name="foodieName" placeholder="e.g. V1000"
                         aria-label="vendor name" [(ngModel)]="vendorId">
-                    <button type="submit" class="btn btn-success"
-                        style="border-style: solid;border-color: black;margin-left: 25px;" (click)=searchByID()>Search Vendor by ID</button>
+                        <br>
+                        <button type="submit" class="btn btn-success"
+                        style="border-style: solid;border-color: black;margin-left: 25px;" (click)=searchByID()><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg> Search by Vendor ID</button>
+                    </div>      
                 </form>
     
-                <form class="form-inline" style="margin-top: 30px;">
+                <form class="form" style="margin-top: 30px;">
                     <!-- <span style="color: rgb(45, 45, 95); font-size: 20px;">Search Vendor by Location: &nbsp;</span> -->
-                    <input class="form-control" type="search" name="foodieName" placeholder="e.g. Delhi"
+                    <div class="col-md-6">
+                        <input class="form-control" type="search" name="foodieName" placeholder="e.g. Delhi"
                         aria-label="vendor name"  [(ngModel)]="location">
+                    <br>
                     <button type="submit" class="btn btn-success"
-                        style="border-style: solid;border-color: black;margin-left: 25px;" (click)=searchByLocation()>Search Vendor by Location</button>
+                        style="border-style: solid;border-color: black;margin-left: 25px;" (click)=searchByLocation()> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg> Search by Location</button>
+                    </div>
+                    
                 </form>
     
 

@@ -1,0 +1,19 @@
+.nav-link, .nav-item{
+    padding-left: 50px;
+}
+
+.nav-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: sticky;
+    top: 10; 
+    z-index: 1;    
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
