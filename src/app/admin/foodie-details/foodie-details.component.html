@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <app-admin-nav></app-admin-nav>
+    <div class="container" style="text-align: center; min-width: 80%; background: white; min-height: 1000px;">
+        <br><br>
+        <h1 style="color: rgb(66, 66, 66);">All Foodie Details</h1>
+        <br>
+        <div style="width: 80%; margin: auto">
+            <nav class="navbar navbar-light">
+                <form class="form-inline">
+                    <span style="color: rgb(45, 45, 95); font-size: 20px;">Search foodie by Name: &nbsp;</span>
+                    <input class="form-control" type="search" name="foodieName" placeholder="Search"
+                        aria-label="vendor name" [(ngModel)]="name" (ngModelChange)="searchByName()">
+                </form>
+            </nav>
+            <br>
+            <br>
+        </div>
+        <div *ngIf="foodies.length>0">
+            <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+        </div>
+        <div *ngIf="foodies.length==0">
+            <h4 style="color: rgb(74, 44, 102);">No foodie details found!!</h4>
+        </div>
+        <br>
+        <table *ngIf="foodies.length>0" class="table table table-hover" style="border-radius: 20px; width:auto; margin: auto;     box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+        ">
+            <thead class="table-primary">
+                <tr>
+                    <th>Foodie ID</th>
+                    <th>Foodie Name</th>
+                    <th>Email ID</th>
+                    <th>Date Of Birth</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Mobile No.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let foodieObj of foodies | paginate:{itemsPerPage:8,currentPage:p};">
+                <td>{{foodieObj.foodieId}}</td>
+                <td>{{foodieObj.firstName+" "+foodieObj.lastName}}</td>
+                <td>{{foodieObj.email}}</td>
+                <td style="width: 150px;">{{foodieObj.dob}}</td>
+                <td>{{foodieObj.gender}}</td>
+                <td>{{foodieObj.address}}</td>
+                <td>{{foodieObj.mobileNo}}</td>
+                </tr>
+              </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,121 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <app-foodie-nav></app-foodie-nav>
+  <div class="container" style="text-align: center; width: 90%; background: white; min-height: 1000px;">
+    <br><br>
+    <h1 style="color: rgb(66, 66, 66);">Choose a vendor to review </h1>
+    <br>
+    <div style="width: 80%; margin: auto">
+      <nav class="navbar navbar-light">
+        <form class="form-inline">
+          <span style="color: rgb(45, 45, 95); font-size: 20px;">Search vendor by Name: &nbsp;</span>
+          <input class="form-control" type="search" name="foodieName" placeholder="Search" aria-label="vendor name"
+            [(ngModel)]="name" (ngModelChange)="searchByName()">
+        </form>
+      </nav>
+      <nav class="navbar navbar-light">
+        <form class="form-inline">
+          <span style="color: rgb(45, 45, 95); font-size: 20px;">Search vendor by location: &nbsp;</span>
+          <input class="form-control" type="search" name="foodieName" placeholder="Search" aria-label="vendor name"
+            [(ngModel)]="location" (ngModelChange)="searchByLocation()">
+        </form>
+      </nav>
+      <br>
+      <br>
+    </div>
+    <div *ngIf="vendors.length>0">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <div *ngIf="vendors.length==0">
+      <h4 style="color: rgb(74, 44, 102);">No active vendors found!!</h4>
+    </div>
+    <br>
+    <table *ngIf="vendors.length>0" class="table table table-hover"
+      style="border-radius: 20px; width:auto; margin: auto;     box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">Vendor<br>ID</th>
+          <th scope="col">Vendor<br>Name</th>
+          <th scope="col">Email<br>ID</th>
+          <th scope="col">Website</th>
+          <th scope="col">Location</th>
+          <th scope="col">Vendor Type</th>
+          <th scope="col">Cuisine Type</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vendorObj of vendors | paginate:{itemsPerPage:6,currentPage:p};">
+          <th scope="row">{{vendorObj.vendorId}}</th>
+          <td>{{vendorObj.vendorName}}</td>
+          <td>{{vendorObj.emailId}}</td>
+          <td>{{vendorObj.website}}</td>
+          <td>{{vendorObj.location}}</td>
+          <td>{{vendorObj.vendorType}}</td>
+          <td>{{vendorObj.cuisinType}}</td>
+          <td>
+            <button type="button" class="btn btn-info" data-toggle="modal"
+              (click)=showReviewForm(vendorObj.vendorId,vendorObj.vendorName) data-target="#exampleModalCenter"
+              style="font-size: 15px;">
+              Post a Review
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLongTitle" style="color: red;">Please enter your review:</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form style="font-size: 15px;">
+            <div class="form-group">
+              <table>
+                <tr>
+                  <td><b>Vendor Id :</b> </td>
+                  <td>&nbsp;&nbsp;{{this.vendorId}}</td>
+                </tr>
+                <tr>
+                  <td><b>Vendor Name :</b> </td>
+                  <td>&nbsp;&nbsp;{{this.vendorName}}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label"><b> Your rating here:</b></label>
+              <input type="number" min="0" max="5" step="0.1" name="rating" class="form-control" id="inputEmail3"
+                placeholder="Rating out of 5" [(ngModel)]="this.rating">
+              <label for="message-text" class="col-form-label"><b> Your comments here:</b></label>
+
+              <textarea class="form-control" name="message" id="message-text" style="font-size: 15px;height: 100px;"
+                placeholder="Your comments" [(ngModel)]="this.review"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)=postReview()>Post Review</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

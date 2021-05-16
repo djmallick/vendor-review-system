@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <app-admin-nav></app-admin-nav>
+    <div class="container" style="text-align: center; min-width: 80%; background: white; min-height: 1000px;">
+        <br><br>
+        <h1 style="color: rgb(66, 66, 66);">All Vendor Details</h1>
+        <br>
+        <div style="width: 80%; margin: auto">
+            <nav class="navbar navbar-light">
+                <form class="form-inline">
+                    <span style="color: rgb(45, 45, 95); font-size: 20px;">Search vendor by Name: &nbsp;</span>
+                    <input class="form-control" type="search" name="venorName" placeholder="Search"
+                        aria-label="vendor name" [(ngModel)]="name" (ngModelChange)="searchByName()">
+                </form>
+            </nav>
+            <br>
+            <br>
+        </div>
+        <div *ngIf="vendors.length>0">
+            <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+        </div>
+        <div *ngIf="vendors.length==0">
+            <h4 style="color: rgb(74, 44, 102);">No vendor details found!!</h4>
+        </div>
+        <br>
+        <table *ngIf="vendors.length>0" class="table table table-hover" style="border-radius:20px; margin: auto;     box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+        ">
+            <thead class="table-primary">
+                <tr>
+                    <th>Vendor ID</th>
+                    <th>Vendor Name</th>
+                    <th>Email ID</th>
+                    <th>Website ID</th>
+                    <th>Location</th>
+                    <th>Vendor Type</th>
+                    <th>Cuisine Type</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let v of vendors | paginate:{itemsPerPage:8,currentPage:p};">
+                    <td>{{v.vendorId}}</td>
+                    <td>{{v.vendorName}}</td>
+                    <td>{{v.emailId}}</td>
+                    <td>{{v.website}}</td>
+                    <td>{{v.location}}</td>
+                    <td>{{v.vendorType}}</td>
+                    <td>{{v.cuisinType}}</td>
+                    <td>{{v.status}}</td>
+                    <td>
+                        <button *ngIf="v.status=='Inactive'" class="btn btn-success badge rounded-pill bg-success"
+                            style="width: 80px; height: 30px;" (click)=activate(v.vendorId)>Activate</button>
+
+                        <button *ngIf="v.status=='Active'" class="btn btn-info badge rounded-pill bg-info"
+                            style="width: 80px; height: 30px;" (click)=deactivate(v.vendorId)>Deactivate</button><br>
+                        <br>
+
+                        <button *ngIf="v.status=='Inactive'" class="btn btn-danger badge rounded-pill bg-danger"
+                            style="width: 80px; height: 30px;" (click)=delete(v.vendorId)>Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

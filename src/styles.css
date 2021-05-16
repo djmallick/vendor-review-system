@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-image: url(https://papers.co/wallpaper/papers.co-sc40-sub-glow-light-skin-food-blur-29-wallpaper.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

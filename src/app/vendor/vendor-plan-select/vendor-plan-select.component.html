@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <app-nav></app-nav>
+    <section class="pricing py-5">
+        <div class="container" style="padding-bottom: 66px;">
+            <h1 style="text-align: center; color: whitesmoke;"><b>Please choose your plan!!</b></h1><br><br>
+            <div class="row">
+                <!-- Free Tier -->
+                <div class="col">
+                    <div class="card" style="width: 14rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-muted text-uppercase text-center"><b>1 month</b></h5>
+                            <h6 class="card-price text-center">₹1000</h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Max buy limit - INR 5lakhs</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Max outlets - 2
+                                </li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                
+                            </ul>
+                           
+                            <a (click)=plan1() class="btn btn-block btn-primary text-uppercase">Select</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Plus Tier -->
+                <div class="col">
+                    <div class="card" style="width: 14rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-muted text-uppercase text-center"><b>3 months</b></h5>
+                            <h6 class="card-price text-center">₹2000</h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Single User</strong></li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Max buy limit - INR 8lakhs</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Max outlets - 4
+                                </li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                
+                            </ul>
+                            
+                            <a (click)=plan2() class="btn btn-block btn-warning text-uppercase"
+                                style="color: whitesmoke;">Select</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pro Tier -->
+                <div class="col">
+                    <div class="card" style="width: 14rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-muted text-uppercase text-center"><b>6 months</b></h5>
+                            <h6 class="card-price text-center">₹5000</h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Single User</strong></li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Max buy limit - INR 12lakhs</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Max outlets - 7
+                                </li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                            </ul>
+                            <a (click)=plan3() class="btn btn-block btn-success text-uppercase">Select </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 14rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-muted text-uppercase text-center"><b>12months</b></h5>
+                            <h6 class="card-price text-center">₹9000</h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Single User</strong></li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Max buy limit - INR 15lakhs</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Max outlets - 10
+                                </li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                               
+                            </ul>
+                            <a (click)=plan4() class="btn btn-block btn-danger text-uppercase">Select </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

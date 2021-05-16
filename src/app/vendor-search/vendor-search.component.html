@@ -1,0 +1,80 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <app-nav></app-nav>
+
+        <div class="container" style="text-align: center; width: 90%;min-height:750px; background: white;">
+            <div class="container" style="align-items: center; padding-left: 15px; width: 80%;">
+                <br><br>
+                <h2>Search a vendor</h2>
+                <br><br>
+                <form class="form-inline">
+                    <!-- <span style="color: rgb(45, 45, 95); font-size: 20px;">Search Vendor by ID: &nbsp;</span> -->
+                    <input class="form-control" type="search" name="foodieName" placeholder="e.g. V1000"
+                        aria-label="vendor name" [(ngModel)]="vendorId">
+                    <button type="submit" class="btn btn-success"
+                        style="border-style: solid;border-color: black;margin-left: 25px;" (click)=searchByID()>Search Vendor by ID</button>
+                </form>
+    
+                <form class="form-inline" style="margin-top: 30px;">
+                    <!-- <span style="color: rgb(45, 45, 95); font-size: 20px;">Search Vendor by Location: &nbsp;</span> -->
+                    <input class="form-control" type="search" name="foodieName" placeholder="e.g. Delhi"
+                        aria-label="vendor name"  [(ngModel)]="location">
+                    <button type="submit" class="btn btn-success"
+                        style="border-style: solid;border-color: black;margin-left: 25px;" (click)=searchByLocation()>Search Vendor by Location</button>
+                </form>
+    
+
+            </div>
+            <br><br>
+            <div *ngIf="vendors.length==0&&initial">No vendor found!!</div>
+            <table *ngIf="vendors.length>0" class="table table table-hover" style="border-style: solid; width: 80%; margin: auto;     box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+                ">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Vendor ID</th>
+                            <th>Vendor name</th>
+                            <th>Email ID</th>
+                            <th>Website</th>
+                            <th>Location</th>
+                            <th>Vendor Type</th>
+                            <th>Cuisine Type</th>
+                        </tr>
+                    </thead>
+        
+                    <tbody>
+                        <tr *ngFor="let complainObj of vendors">
+                            <th scope="row">{{complainObj.vendorId}}</th>
+                            <td>{{complainObj.vendorName}}</td>
+                            <td>{{complainObj.emailId}}</td>
+                            <td>{{complainObj.website}}</td>
+                            <td>{{complainObj.location}}</td>
+                            <td>{{complainObj.vendorType}}</td>
+                            <td>{{complainObj.cuisinType}}</td>
+                        </tr>
+        
+                    </tbody>
+                </table>
+
+
+        </div>
+    </body>
+
+    </html>

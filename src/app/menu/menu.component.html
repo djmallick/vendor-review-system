@@ -25,8 +25,14 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a id="tabs" href="#">Review</a></li>
-            <li><a id="tabs" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a id="tabs" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li id="tab1" class="dropdown">
+              <button class="dropbtn"><span class="glyphicon glyphicon-user"></span> Sign Up</button>
+              <div class="dropdown-content">
+                <a href="/register">Foodie</a>
+                <a href="#">Vendor</a>
+              </div>
+            </li>
+            <li><a id="tab2" href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
         </div>
       </nav>

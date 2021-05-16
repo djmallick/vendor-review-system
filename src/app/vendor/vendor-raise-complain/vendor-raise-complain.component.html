@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <app-vendor-nav></app-vendor-nav>
+  <div class="container" style="text-align: center; width: 90%; background: white; min-height: 1000px;">
+    <br><br>
+    <h1 style="color: rgb(66, 66, 66);">Your all reviews</h1>
+    <br>
+    <div style="width: 80%; margin: auto">
+      <nav class="navbar navbar-light">
+        <form class="form-inline">
+          <span style="color: rgb(45, 45, 95); font-size: 20px;">Search review by Foodie Name: &nbsp;</span>
+          <input class="form-control" type="search" name="foodieName" placeholder="Search" aria-label="vendor name"
+            [(ngModel)]="foodieName" (ngModelChange)="searchByFoodieName()">
+        </form>
+      </nav>
+      <br>
+      <br>
+    </div>
+    <div *ngIf="reviews.length>0">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <div *ngIf="reviews.length==0">
+      <h4 style="color: rgb(74, 44, 102);">No complaints found!!</h4>
+    </div>
+    <br>
+    <table *ngIf="reviews.length>0" class="table table table-hover"
+      style="border-radius: 20px; border-style: solid;    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">Foodie<br>Id</th>
+          <th scope="col">Foodie<br>Name</th>
+          <th scope="col">Phone<br>Number</th>
+          <th scope="col">Date Of<br>Review</th>
+          <th scope="col">Comments</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reviewObj of reviews | paginate:{itemsPerPage:6,currentPage:p};">
+          <th scope="row">{{reviewObj.foodieId}}</th>
+          <td>{{reviewObj.firstName}}</td>
+          <td>{{reviewObj.mobile}}</td>
+          <td>{{reviewObj.dateOfReview}}</td>
+          <td style="max-width: 200px;">{{reviewObj.review}}</td>
+          <td>{{reviewObj.rating}}</td>
+          <td><button type="button" class="btn btn-primary"
+              (click)=showComplaintForm(reviewObj.reviewId,reviewObj.foodieId) data-toggle="modal"
+              data-target="#exampleModalCenter" style="font-size: 15px;">
+              Raise Complain
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLongTitle" style="color: red;">Raise Your Complain Here:</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form style="font-size: 15px;">
+            <div class="form-group">
+              <table>
+                <tr>
+                  <td><b>Foodie Id :</b> </td>
+                  <td>{{this.reviewObj.foodieId}}</td>
+                </tr>
+                <tr>
+                  <td><b>Review Id :</b> </td>
+                  <td>{{this.reviewObj.reviewId}}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label"><b> Your Complain here:</b></label>
+              <textarea class="form-control" name="message" id="message-text" style="font-size: 15px;height: 100px;"
+                [(ngModel)]="complaintObj.complain"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)=submitComplaint()>Raise Complaint</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

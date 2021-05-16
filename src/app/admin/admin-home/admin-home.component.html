@@ -1,0 +1,95 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            background-color: black;
+            opacity: 0.8;
+            border-radius: 10px;
+            color: white;
+            border: 1px solid;
+            padding: 10px;
+            box-shadow: 5px 10px 18px #1aa137;
+            border: none;
+        }
+        .card:hover{
+            transform: scale(1.03);
+            transition: 0.3s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <app-admin-nav></app-admin-nav>
+    <div class="container">
+        <br>
+        <br><br>
+        <h1 style="color: rgb(66, 66, 66); text-align: center;">Welcome Admin</h1>
+        <br>
+    </div>
+    <div class="container" style="padding-top: 30px;">
+        <h3>Recent Vendor Registration Requests</h3>
+        <hr>
+        <p *ngIf="pendingVendors.length==0" style="margin-top: 40px; text-align: center; font-weight: 400; font-size: 18px; color: rgb(8, 8, 71); font-family:Verdana, Geneva, Tahoma, sans-serif ;">No Pending vendor Requests</p>
+        <div class="row">
+            <div  *ngFor="let vendor of pendingVendors" class="col-sm-3">
+                <div class="card" style="background-color:rgb(24, 24, 26);opacity: 0.8;box-shadow: 5px 10px 18px #362c2c;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{vendor.vendorName}}</h5>
+                        <p class="card-text">Vendor Type:&nbsp;{{vendor.vendorType}}</p>
+                        <p class="card-text">Cuisine Type:&nbsp;{{vendor.cuisinType}}</p>
+                        <p class="card-text">Location:&nbsp;{{vendor.location}}</p>
+                    </div>
+                    <button  class="btn btn-info" (click)="goToRequest()" style="border-style: solid;border-color: black;">Check</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding-top: 30px;">
+        <h3>Recent Vendor Complaints</h3>
+        <hr>
+        <p *ngIf="complains.length==0" style="margin-top: 40px; text-align: center; font-weight: 400; font-size: 18px; color: rgb(8, 8, 71); font-family:Verdana, Geneva, Tahoma, sans-serif ;">No Recent Complaints</p>
+        <div class="row">
+            <div *ngFor="let complaint of complains" class="col-sm-3">
+                <div class="card"
+                    style="background-color:rgb(78, 61, 117);opacity: 0.7;box-shadow: 5px 10px 18px #992727;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{complaint.vendorId}}</h5>
+                        <p class="card-text">Review ID:&nbsp;{{complaint.reviewId}}</p>
+                        <p class="card-text">Complaint:&nbsp;{{complaint.complain}}</p>
+                    </div>
+                    <button  class="btn btn-success" (click)=goToComplaint() style="border-style: solid;border-color: black;">Check</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="container" style="padding-top: 30px; padding-bottom: 60px;">
+        <h3>Recent Foodie Reviews</h3>
+        <hr>
+        <p *ngIf="reviews.length==0" style="margin-top: 40px; text-align: center; font-weight: 400; font-size: 18px; color: rgb(8, 8, 71); font-family:Verdana, Geneva, Tahoma, sans-serif ;">No Recent Reviews</p>
+        <div class="row">
+            <div  *ngFor="let review of reviews" class="col-sm-3">
+                <div class="card"
+                    style="background-color:rgb(47, 46, 48);opacity: 0.7;box-shadow: 5px 10px 18px #141314;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{review.foodieId}}</h5>
+                        <p class="card-text">"{{review.review}}"</p>
+                        <p class="card-text">Given to: &nbsp;{{review.vendorId}}</p>
+                    </div>
+                    <button  class="btn btn-primary" (click)=goToReview() style="border-style: solid;border-color: black;">Check</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+
+</body>
+
+</html>

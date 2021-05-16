@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <app-nav></app-nav>
+    <div class="login-wrap" style=" margin-top: 40px;">
+        <div class="login-html">
+            <div>
+                <h1 style="text-align: center; color: rgb(117, 7, 93); padding-top: 10px;">CONGRATULATIONS!!</h1><br>
+                <h3 style="text-align: center;">Your registration is successful</h3><br><br><br>
+                <h5 style="text-align: center;"> Your Foodie ID is:</h5> <br>
+                <h1 style="text-align: center;">{{foodieId}}
+                </h1><br>
+                <h6 style="text-align: center; color: red;">[*Use this foodie id for logging in next time]</h6>
+                <br><br>
+                <div style="width: max-content; margin: auto;">
+                    <button type="button" class="btn btn-success" (click)="goTologin()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

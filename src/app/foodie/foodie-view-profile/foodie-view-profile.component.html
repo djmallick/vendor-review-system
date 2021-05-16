@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <app-foodie-nav></app-foodie-nav>
+    <div class="container" style="text-align: center; width: 90%; background: white;">
+        <br>
+        <h2 style="color: rgb(66, 66, 66);">Your Profile details</h2>
+        <br>
+        <div class="container" id="Details" style="width: 900px;">
+                <table class="table table table-hover">
+                    <tbody>
+                        <tr>
+                            <td style="width: 350px;"><b>Foodie ID</b></td>
+                            <td id="data">{{foodieId}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 350px;"><b>First Name</b></td>
+                            <td id="data" *ngIf="inputData">{{firstName}}</td>
+                            <td *ngIf="inputForms"><input type="text" class="form-control" id="inputEmail3"  [(ngModel)]="firstName"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 350px;"><b>Last Name</b></td>
+                            <td id="data" *ngIf="inputData">{{lastName}}</td>
+                            <td *ngIf="inputForms"><input type="text" class="form-control" id="inputEmail3"  [(ngModel)]="lastName"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 350px;"><b>Email ID</b></td>
+                            <td id="data" *ngIf="inputData">{{email}}</td>
+                            <td *ngIf="inputForms"><input type="text" class="form-control" id="inputEmail3" [(ngModel)]="email"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 350px;"><b>Date Of Birth</b></td>
+                            <td id="data" *ngIf="inputData">{{dob}}</td>
+                            <td *ngIf="inputForms"><input type="date" class="form-control" id="inputEmail3" [(ngModel)]="dob"></td> 
+                        </tr>
+                        <tr>
+                            <td style="width: 350px;"><b>Gender</b></td>
+                            <td id="data" *ngIf="inputData">{{gender}}</td>
+                            <td *ngIf="inputForms">
+                                <select class="form-select" [(ngModel)]="gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
+                              </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 350px;"><b>Address</b></td>
+                            <td id="data" *ngIf="inputData">{{address}}</td>
+                            <td *ngIf="inputForms"><input type="text" class="form-control" id="inputEmail3" [(ngModel)]="address"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 350px;"><b>Mobile No</b></td>
+                            <td id="data" *ngIf="inputData">{{mobile}}</td>
+                            <td *ngIf="inputForms"><input type="text" class="form-control" id="inputEmail3" [(ngModel)]="mobile"></td>
+                        </tr>
+                    </tbody>
+                   
+                </table>
+
+                <div class="container">
+          
+                    <button *ngIf="editButton" class="btn btn-info badge rounded-pill bg-info" (click)=showEditForms() style="width: 100px; height: 40px; font-size: 16px;">
+                        Edit</button>
+                    <button *ngIf="saveButton" class="btn btn-success badge rounded-pill bg-success" (click)=updateFoodie()  style="width: 100px; height: 40px; font-size: 16px;">Save
+                        All</button>
+                    &nbsp;&nbsp;
+                    <button *ngIf="saveButton" class="btn btn-secondary badge rounded-pill bg-secondary"
+                    style="width: 100px; height: 40px; font-size: 16px;" (click)=cancelEdit()>Cancel</button>
+                   
+                </div>
+             <br><br><br><br>
+        </div>
+           
+          <br><br><br><br>
+          
+               
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+input, select{
+    width: 50%;
+    margin: auto;
+}
+
+table{
+    padding-left: 50px;
+    min-height: 600px;
+    text-align: left;
+}
+
+tr{
+    height: 87px;
+}
+
+#data{
+    text-align: left;
+    padding-left: 150px;
+}

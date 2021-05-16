@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <app-nav></app-nav>
+
+  <div class="login-wrap" style=" margin-top: 40px;">
+    <div class="login-html">
+      <input id="tab-1" type="radio" name="tab" class="vendor-sign-in" checked><label for="tab-1" class="tab">Vendor</label>
+      <input id="tab-2" type="radio" name="tab" class="foodie-sign-in"><label for="tab-2" class="tab">Foodie</label>
+      <!-- <input id="tab-3" type="radio" name="tab" class="admin-sign-in"><label for="tab-3" class="tab">Admin</label> -->
+      <div class="login-form">
+
+        <!-- Vendor -->
+        <div class="vendor-sign-in-htm">
+          <div class="group">
+            <label for="user" class="label">Vendor id</label>
+            <input id="user" type="text" class="input" [(ngModel)]="login.userId">
+          </div>
+          <div class="group">
+            <label for="pass" class="label">Password</label>
+            <input id="pass" type="password" class="input" data-type="password"  [(ngModel)]="login.passWord">
+          </div>
+          <div *ngIf="errorMsg" style="color: red; text-align: center;">*All fields are mandatory</div>
+          <div class="group">
+            <input type="submit" (click)=vendorLoginSubmit() class="button" value="Sign In">
+          </div>
+          <div class="hr"></div>
+          <div class="foot-lnk">
+            <a href="#forgot">Forgot Password?</a>
+          </div>
+        </div>
+
+        <!-- Foodie -->
+        <div class="foodie-sign-in-htm">
+          <div class="group">
+            <label for="user" class="label">Foodie id</label>
+            <input  id="user" type="text" class="input" [(ngModel)]="login1.userId">
+          </div>
+          <div class="group">
+            <label for="pass" class="label">Password</label>
+            <input id="pass" type="password" class="input" data-type="password"  [(ngModel)]="login1.passWord">
+          </div>
+          <div *ngIf="errorMsg1" style="color: red; text-align: center; font-weight: 100;">*All fields are mandatory</div>
+
+          <div class="group">
+            <input type="submit" (click)=foodieLoginSubmit() class="button" value="Sign In">
+          </div>
+
+          <div class="foot-lnk">
+            <div class="hr"><a href="#forgot">Forgot Password?</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

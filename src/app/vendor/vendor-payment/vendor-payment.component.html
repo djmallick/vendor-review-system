@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <app-nav></app-nav>
+    <div id="D">
+        <div class="login-wrap" style=" margin-top: 40px;">
+            <h2 style="color: rgb(4, 4, 58); text-align: center;">Payment Interface</h2>
+            <br>
+            <h4 style="text-align: center;">Your payment amount is INR {{amount}}</h4>
+            <br><br><br>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group" style="padding-left: 128px;">
+                        <label for="user" class="label" style="padding-left: 55px; color: grey;"><b>User id(Net
+                                Banking)</b> <b style="color: red;">*</b></label>
+                        <input id="user" type="text" class="input" placeholder="Enter your User Id"
+                            style="width: fit-content; padding-left: 45px;" [(ngModel)]="payment.account_no">
+                    </div>
+                    <div class="group" style="padding-left: 128px;">
+                        <label for="pass" class="label" style="padding-left: 55px; color: grey;"><b>Password(Net
+                                Banking)</b><b style="color: red;">*</b></label>
+                        <input id="pass" type="password" class="input" data-type="password"
+                            placeholder="Enter your Password" style="width: fit-content; padding-left: 45px;" [(ngModel)]="payment.password">                    </div>
+                    <div class="btn-group" role="group" aria-label="Basic example" style="padding-left: 200px;">
+                        <a href="vendorregister/plans"><button type="button" class="btn btn-secondary">Back</button></a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a><button type="button" class="btn btn-success" (click)=proceedPayment()>Pay</button></a>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a href="#forgot">Forgot Password?</a>
+                    </div>
+                    <br>
+                    <p style="color: red; text-align: center;">Fields marked with * are mandatory</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

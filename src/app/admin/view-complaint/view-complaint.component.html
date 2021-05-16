@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <app-admin-nav></app-admin-nav>
+    <div class="container" style="text-align: center; min-width: 80%; background: white; min-height: 1000px;">
+        <br><br>
+        <h1 style="color: rgb(66, 66, 66);">Vendor Complaints</h1>
+        <br>
+        <div style="width: 80%; margin: auto">
+            <nav class="navbar navbar-light">
+                <form class="form-inline">
+                    <span style="color: rgb(45, 45, 95); font-size: 20px;">Search complaints by ID: &nbsp;</span>
+                    <input class="form-control" type="search" name="foodieName" placeholder="Search"
+                        aria-label="vendor name" [(ngModel)]="id" (ngModelChange)="searchByName()">
+                </form>
+            </nav>
+            <br>
+            <br>
+        </div>
+        <div *ngIf="complains.length>0">
+            <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+        </div>
+        <div *ngIf="complains.length==0">
+            <h4 style="color: rgb(74, 44, 102);">No Complaints found!!</h4>
+        </div>
+        <br>
+        <table *ngIf="complains.length>0" class="table table table-hover" style="border-radius: 20px; margin: auto;     box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+        ">
+            <thead class="table-primary">
+                <tr>
+                    <th>Complaint ID</th>
+                    <th>Review ID</th>
+                    <th>Vendor Name</th>
+                    <th>Complaint</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+           
+            <tbody>
+              <tr *ngFor="let complainObj of complains | paginate:{itemsPerPage:8,currentPage:p};">
+                    <th scope="row">{{complainObj.complainId}}</th>
+                    <td>{{complainObj.reviewId}}</td>
+                    <td>{{complainObj.vendorId}}</td>
+                    <td>{{complainObj.complain}}</td> 
+                    <td>
+
+                    <button class="btn btn-danger rounded-pill bg-danger" (click)=deleteReview(complainObj.reviewId)>&nbsp;&nbsp;Delete review&nbsp;&nbsp;</button><br> <br>
+                    <button class="btn btn-info rounded-pill bg-info" (click)=rejectReview(complainObj.reviewId,complainObj.vendorId,complainObj.complainId)>Reject Complaint</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

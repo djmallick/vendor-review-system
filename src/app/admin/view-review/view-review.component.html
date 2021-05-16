@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <app-admin-nav></app-admin-nav>
+    <div class="container" style="text-align: center; min-width: 80%; background: white; min-height: 1000px;">
+        <br>
+        <h1 style="color: rgb(66, 66, 66);">Vendor Reviews</h1>
+        <br>
+
+        <br>
+        <div style="width: 80%; margin: auto">
+            <nav class="navbar navbar-light">
+                <form class="form-inline">
+                    <span style="color: rgb(45, 45, 95); font-size: 20px;">Search vendor by Name: &nbsp;</span>
+                    <input class="form-control" type="search" name="venorName" placeholder="Search"
+                        aria-label="vendor name" [(ngModel)]="firstName" (ngModelChange)="search()">
+                </form>
+            </nav>
+            <br>
+            <br>
+        </div>
+        <div *ngIf="reviews.length>0">
+            <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+        </div>
+        <div *ngIf="reviews.length==0">
+            <h4 style="color: rgb(74, 44, 102);">No reviews found!!</h4>
+        </div>
+        <br>
+        <table *ngIf="reviews.length>0" class="table table table-hover" style="border-radius: 20px; margin: auto; box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+        ">
+
+            <thead class="table-primary">
+                <tr style="min-height: 100px;">
+                    <th>Review ID</th>
+                    <th>Given by <br> (Foodie)</th>
+                    <th>Given to <br> (Vendor)</th>
+                    <th>Rating</th>
+                    <th>Comments</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let complainObj of reviews | paginate:{itemsPerPage:8,currentPage:p};">
+                    <th scope="row">{{complainObj.reviewId}}</th>
+                    <td>{{complainObj.foodieId}}</td>
+                    <td>{{complainObj.vendorId}}</td>
+                    <td>{{complainObj.rating}}</td>
+                    <td style="max-width: 350px;">{{complainObj.review}}</td>
+                    <td>{{complainObj.dateOfReview}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

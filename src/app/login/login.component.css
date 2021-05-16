@@ -1,0 +1,295 @@
+body{
+    margin:0;
+    color:#6a6f8c;
+    /* background:#c8c8c8; */
+    font:600 16px/18px 'Open Sans',sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  *,:after,:before{box-sizing:border-box}
+  .clearfix:after,.clearfix:before{content:'';display:table}
+  .clearfix:after{clear:both;display:block}
+  a{color:inherit;text-decoration:none}
+  
+  .login-wrap{
+
+    background-color: white;
+    width:100%;
+    margin:auto;
+    max-width:525px;
+    min-height:670px;
+    position:relative;
+    /* background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center; */
+    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+    border-radius: 10px;
+  }
+  .login-html{
+    width:100%;
+    height:100%;
+    position:absolute;
+    padding:90px 70px 50px 70px;
+  }
+  .login-html .vendor-sign-in-htm,
+  .login-html .foodie-sign-in-htm,
+  .login-html .admin-sign-in-htm{
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    position:absolute;
+    transform:rotateY(180deg);
+    backface-visibility:hidden;
+    transition:all .6s linear;
+    margin-top: 60px;
+  }
+  .login-html .vendor-sign-in,
+  .login-html .foodie-sign-in,
+  .login-html .admin-sign-in,
+  .login-form .group .check{
+    display:none;
+  }
+  .login-html .tab,
+  .login-form .group .label,
+  .login-form .group .button{
+    text-transform:uppercase;
+  }
+  .login-html .tab{
+    cursor: pointer;
+    font-size:22px;
+    margin-right:15px;
+    padding-bottom:5px;
+    margin:0 15px 10px 0;
+    display:inline-block;
+    border-bottom:2px solid transparent;
+  }
+  .login-html .vendor-sign-in:checked + .tab,
+  .login-html .foodie-sign-in:checked + .tab,
+  .login-html .admin-sign-in:checked + .tab{
+    /* color:#fff; */
+    border-color:#1161ee;
+    color:#1161ee;
+  }
+  .login-form{
+    min-height:345px;
+    position:relative;
+    perspective:1000px;
+    transform-style:preserve-3d;
+  }
+  .login-form .group{
+    margin-bottom:15px;
+  }
+  .login-form .group .label,
+  .login-form .group .input{
+    width:100%;
+    display:block;
+  }
+  .login-form .group .button{
+    width:70%;
+    color:#fff;
+    display:block;
+    margin: auto;
+  }
+
+  .login-form .group .button:hover{
+       background:#4385f8;
+  }
+
+  .login-form .group .input,
+  .login-form .button{
+    outline: none;
+    padding:15px 20px;
+    border:none;
+    border: 2px solid rgb(219, 219, 219);
+    border-radius:25px;
+  }
+
+  .login-form .group .button{
+    margin-top: 60px;
+}
+
+  .login-form .group .input:hover,
+  .login-form .button:hover{
+      background-color: rgb(237, 246, 252);
+      transition: 0.6s;
+  }
+
+
+  .login-form .group input[data-type="password"]{
+    -webkit-text-security:circle;
+  }
+  .login-form .group .label{
+    color:#aaa;
+    font-size:12px;
+  }
+  .login-form .group .button{
+    background:#5c97ff;
+  }
+  .login-form .group label .icon{
+    width:15px;
+    height:15px;
+    border-radius:2px;
+    position:relative;
+    display:inline-block;
+    background:rgba(255,255,255,.1);
+  }
+  .login-form .group label .icon:before,
+  .login-form .group label .icon:after{
+    content:'';
+    width:10px;
+    height:2px;
+    background:#fff;
+    position:absolute;
+    transition:all .2s ease-in-out 0s;
+  }
+  .login-form .group label .icon:before{
+    left:3px;
+    width:5px;
+    bottom:6px;
+    transform:scale(0) rotate(0);
+  }
+  .login-form .group label .icon:after{
+    top:6px;
+    right:0;
+    transform:scale(0) rotate(0);
+  }
+  .login-form .group .check:checked + label{
+    color:#fff;
+  }
+  .login-form .group .check:checked + label .icon{
+    background:#1161ee;
+  }
+  .login-form .group .check:checked + label .icon:before{
+    transform:scale(1) rotate(45deg);
+  }
+  .login-form .group .check:checked + label .icon:after{
+    transform:scale(1) rotate(-45deg);
+  }
+  .login-html .vendor-sign-in:checked + .tab + .foodie-sign-in + .tab + .login-form .vendor-sign-in-htm{
+    transform:rotate(0);
+  }
+  .login-html .foodie-sign-in:checked + .tab + .login-form .foodie-sign-in-htm{
+    transform:rotate(0);
+  }
+  .login-html .admin-sign-in:checked + .tab + .login-form .admin-sign-in-htm{
+    transform:rotate(0);
+  }
+  
+  .hr{
+    margin:60px 0 50px 0;
+    background:rgba(255,255,255,.2);
+  }
+  .foot-lnk{
+    text-align:center;
+  }
+
+  .fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @-webkit-keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  /* Simple CSS3 Fade-in Animation */
+  @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  
+  .fadeIn {
+    opacity:0;
+    -webkit-animation:fadeIn ease-in 1;
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+  
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+  
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+  }
+  
+  .fadeIn.first {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+  
+  .fadeIn.second {
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+  }
+  
+  .fadeIn.third {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+  }
+  
+  .fadeIn.fourth {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+  }
+  
+  /* Simple CSS3 Fade-in Animation */
+  .underlineHover:after {
+    display: block;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.2s;
+  }
+  
+  .underlineHover:hover {
+    color: #0d0d0d;
+  }
+  
+  .underlineHover:hover:after{
+    width: 100%;
+  }
+  
+  
+  
+  /* OTHERS */
+  
+  *:focus {
+      outline: none;
+  } 
+  
+  #icon {
+    width:60%;
+  }
+  
